@@ -44,9 +44,9 @@ public class ParseInstallation extends ParseObject {
   /* package */ static final String KEY_CHANNELS = "channels";
 
   private static final List<String> READ_ONLY_FIELDS = Collections.unmodifiableList(
-      Arrays.asList(KEY_DEVICE_TYPE, KEY_INSTALLATION_ID, KEY_DEVICE_TOKEN, KEY_PUSH_TYPE,
+      Arrays.asList(KEY_DEVICE_TYPE,
           KEY_TIME_ZONE, KEY_LOCALE, KEY_APP_VERSION, KEY_APP_NAME, KEY_PARSE_VERSION,
-          KEY_APP_IDENTIFIER, KEY_OBJECT_ID));
+          KEY_APP_IDENTIFIER));
 
   // TODO(mengyan): Inject into ParseInstallationInstanceController
   /* package */ static ParseCurrentInstallationController getCurrentInstallationController() {

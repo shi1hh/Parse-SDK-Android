@@ -26,7 +26,7 @@ import bolts.Continuation;
 import bolts.Task;
 import bolts.TaskCompletionSource;
 
-/** package */ class ParseRESTObjectBatchCommand extends ParseRESTCommand {
+/** package */ public class ParseRESTObjectBatchCommand extends ParseRESTCommand {
   public final static int COMMAND_OBJECT_BATCH_MAX_SIZE = 50;
 
   private static final String KEY_RESULTS = "results";
@@ -130,7 +130,7 @@ import bolts.TaskCompletionSource;
     return tasks;
   }
 
-  private ParseRESTObjectBatchCommand(
+  public ParseRESTObjectBatchCommand(
       String httpPath,
       ParseHttpRequest.Method httpMethod,
       JSONObject parameters,

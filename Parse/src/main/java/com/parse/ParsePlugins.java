@@ -21,12 +21,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-class ParsePlugins {
+public class ParsePlugins {
 
     private static final String INSTALLATION_ID_LOCATION = "installationId";
 
     private static final Object LOCK = new Object();
-    private static ParsePlugins instance;
+    public static ParsePlugins instance;
 
     // TODO(grantland): Move towards a Config/Builder parameter pattern to allow other configurations
     // such as path (disabled for Android), etc.
@@ -43,7 +43,7 @@ class ParsePlugins {
         }
     }
 
-    static ParsePlugins get() {
+     static ParsePlugins get() {
         synchronized (LOCK) {
             return instance;
         }
@@ -88,7 +88,7 @@ class ParsePlugins {
         }
     }
 
-    ParseHttpClient restClient() {
+    public ParseHttpClient restClient() {
         synchronized (lock) {
             if (restClient == null) {
                 OkHttpClient.Builder clientBuilder = configuration.clientBuilder;
@@ -115,8 +115,9 @@ class ParsePlugins {
                         }
                         // client key can be null with self-hosted Parse Server
                         if (configuration.clientKey != null) {
-                            headersBuilder.set(ParseRESTCommand.HEADER_CLIENT_KEY, configuration.clientKey);
+                            headersBuilder.set("X-Parse-Master-Key", configuration.clientKey);
                         }
+                        
                         request = request.newBuilder()
                                 .headers(headersBuilder.build())
                                 .build();
